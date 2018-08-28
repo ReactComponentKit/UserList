@@ -8,7 +8,30 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User: Codable, Hashable {
     let id: Int
     let name: String
+    let username: String
+    let email: String
+    let phone: String
+    
+    public var hashValue: Int {
+        return id.hashValue + name.hashValue
+    }
+}
+
+extension User {
+    var toJsonData: Data {
+        guard let jsonData = try? JSONEncoder().encode(self) else { return "{}".data(using: .utf8)! }
+        return jsonData
+    }
+    
+    var toParamDic: [String:String] {
+        return [
+            "name": name,
+            "username": username,
+            "email": email,
+            "phone": phone
+        ]
+    }
 }

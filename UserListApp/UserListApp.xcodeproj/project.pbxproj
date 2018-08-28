@@ -7,10 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4E156944213585FD00CE22C9 /* UserServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E156943213585FD00CE22C9 /* UserServiceProvider.swift */; };
+		4E1569462135865400CE22C9 /* LodingComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1569452135865400CE22C9 /* LodingComponent.swift */; };
+		4E1569482135867800CE22C9 /* ErrorComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1569472135867800CE22C9 /* ErrorComponent.swift */; };
+		4E15694A213586AA00CE22C9 /* UserCardComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E156949213586AA00CE22C9 /* UserCardComponent.swift */; };
+		4E15694C2135870500CE22C9 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15694B2135870500CE22C9 /* UserListViewModel.swift */; };
+		4E15694E2135893700CE22C9 /* UsersReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15694D2135893700CE22C9 /* UsersReducer.swift */; };
+		4E156950213589CE00CE22C9 /* LoadUsersAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15694F213589CE00CE22C9 /* LoadUsersAction.swift */; };
+		4E15695321359B7200CE22C9 /* MakeUserListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */; };
+		4E15695521359BF900CE22C9 /* UserItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695421359BF900CE22C9 /* UserItemModel.swift */; };
+		4E15695821359D3C00CE22C9 /* LogToConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695721359D3C00CE22C9 /* LogToConsole.swift */; };
 		4E47427D213456520009385F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47427C213456520009385F /* UserService.swift */; };
 		4E474280213456940009385F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47427F213456940009385F /* User.swift */; };
+		4EC4A6412135B0AD009ABF2C /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6402135B0AD009ABF2C /* ButtonComponent.swift */; };
+		4EC4A6432135B30C009ABF2C /* UpdateUserAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6422135B30C009ABF2C /* UpdateUserAction.swift */; };
+		4EC4A6452135B3B5009ABF2C /* DeleteUserAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6442135B3B5009ABF2C /* DeleteUserAction.swift */; };
+		4EC4A6472135BA71009ABF2C /* AddNewUserAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6462135BA71009ABF2C /* AddNewUserAction.swift */; };
 		4ED819BA2134543F00BBE6E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED819B92134543F00BBE6E8 /* AppDelegate.swift */; };
-		4ED819BC2134543F00BBE6E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED819BB2134543F00BBE6E8 /* ViewController.swift */; };
+		4ED819BC2134543F00BBE6E8 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED819BB2134543F00BBE6E8 /* UserListViewController.swift */; };
 		4ED819BF2134543F00BBE6E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED819BD2134543F00BBE6E8 /* Main.storyboard */; };
 		4ED819C12134544000BBE6E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4ED819C02134544000BBE6E8 /* Assets.xcassets */; };
 		4ED819C42134544000BBE6E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED819C22134544000BBE6E8 /* LaunchScreen.storyboard */; };
@@ -32,11 +46,25 @@
 /* Begin PBXFileReference section */
 		2519E7FC85F0D526F5BCBF2F /* Pods_UserListApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_UserListApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		460582F705FF2C770900AE50 /* Pods-UserListAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-UserListAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-UserListAppTests/Pods-UserListAppTests.release.xcconfig"; sourceTree = "<group>"; };
+		4E156943213585FD00CE22C9 /* UserServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserServiceProvider.swift; sourceTree = "<group>"; };
+		4E1569452135865400CE22C9 /* LodingComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LodingComponent.swift; sourceTree = "<group>"; };
+		4E1569472135867800CE22C9 /* ErrorComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorComponent.swift; sourceTree = "<group>"; };
+		4E156949213586AA00CE22C9 /* UserCardComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardComponent.swift; sourceTree = "<group>"; };
+		4E15694B2135870500CE22C9 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
+		4E15694D2135893700CE22C9 /* UsersReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersReducer.swift; sourceTree = "<group>"; };
+		4E15694F213589CE00CE22C9 /* LoadUsersAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUsersAction.swift; sourceTree = "<group>"; };
+		4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeUserListSectionModel.swift; sourceTree = "<group>"; };
+		4E15695421359BF900CE22C9 /* UserItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItemModel.swift; sourceTree = "<group>"; };
+		4E15695721359D3C00CE22C9 /* LogToConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogToConsole.swift; sourceTree = "<group>"; };
 		4E47427C213456520009385F /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4E47427F213456940009385F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4EC4A6402135B0AD009ABF2C /* ButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
+		4EC4A6422135B30C009ABF2C /* UpdateUserAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserAction.swift; sourceTree = "<group>"; };
+		4EC4A6442135B3B5009ABF2C /* DeleteUserAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserAction.swift; sourceTree = "<group>"; };
+		4EC4A6462135BA71009ABF2C /* AddNewUserAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewUserAction.swift; sourceTree = "<group>"; };
 		4ED819B62134543F00BBE6E8 /* UserListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED819B92134543F00BBE6E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4ED819BB2134543F00BBE6E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4ED819BB2134543F00BBE6E8 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		4ED819BE2134543F00BBE6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4ED819C02134544000BBE6E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4ED819C32134544000BBE6E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -70,10 +98,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E15693F2135857600CE22C9 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+				4E1569452135865400CE22C9 /* LodingComponent.swift */,
+				4E1569472135867800CE22C9 /* ErrorComponent.swift */,
+				4EC4A6402135B0AD009ABF2C /* ButtonComponent.swift */,
+				4E156949213586AA00CE22C9 /* UserCardComponent.swift */,
+			);
+			path = Component;
+			sourceTree = "<group>";
+		};
+		4E1569402135858E00CE22C9 /* Action */ = {
+			isa = PBXGroup;
+			children = (
+				4E15694F213589CE00CE22C9 /* LoadUsersAction.swift */,
+				4EC4A6422135B30C009ABF2C /* UpdateUserAction.swift */,
+				4EC4A6442135B3B5009ABF2C /* DeleteUserAction.swift */,
+				4EC4A6462135BA71009ABF2C /* AddNewUserAction.swift */,
+			);
+			path = Action;
+			sourceTree = "<group>";
+		};
+		4E156941213585DD00CE22C9 /* Reducer */ = {
+			isa = PBXGroup;
+			children = (
+				4E15694D2135893700CE22C9 /* UsersReducer.swift */,
+			);
+			path = Reducer;
+			sourceTree = "<group>";
+		};
+		4E156942213585E300CE22C9 /* Postware */ = {
+			isa = PBXGroup;
+			children = (
+				4E15695721359D3C00CE22C9 /* LogToConsole.swift */,
+				4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */,
+			);
+			path = Postware;
+			sourceTree = "<group>";
+		};
+		4E15695121359B2900CE22C9 /* SectionModel */ = {
+			isa = PBXGroup;
+			children = (
+				4E15695421359BF900CE22C9 /* UserItemModel.swift */,
+			);
+			path = SectionModel;
+			sourceTree = "<group>";
+		};
 		4E47427B213456340009385F /* APIService */ = {
 			isa = PBXGroup;
 			children = (
 				4E47427C213456520009385F /* UserService.swift */,
+				4E156943213585FD00CE22C9 /* UserServiceProvider.swift */,
 			);
 			path = APIService;
 			sourceTree = "<group>";
@@ -109,10 +185,16 @@
 		4ED819B82134543F00BBE6E8 /* UserListApp */ = {
 			isa = PBXGroup;
 			children = (
+				4E1569402135858E00CE22C9 /* Action */,
+				4E156941213585DD00CE22C9 /* Reducer */,
+				4E156942213585E300CE22C9 /* Postware */,
+				4E15693F2135857600CE22C9 /* Component */,
 				4E47427E213456830009385F /* Model */,
 				4E47427B213456340009385F /* APIService */,
+				4E15695121359B2900CE22C9 /* SectionModel */,
 				4ED819B92134543F00BBE6E8 /* AppDelegate.swift */,
-				4ED819BB2134543F00BBE6E8 /* ViewController.swift */,
+				4ED819BB2134543F00BBE6E8 /* UserListViewController.swift */,
+				4E15694B2135870500CE22C9 /* UserListViewModel.swift */,
 				4ED819BD2134543F00BBE6E8 /* Main.storyboard */,
 				4ED819C02134544000BBE6E8 /* Assets.xcassets */,
 				4ED819C22134544000BBE6E8 /* LaunchScreen.storyboard */,
@@ -327,10 +409,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E156950213589CE00CE22C9 /* LoadUsersAction.swift in Sources */,
+				4EC4A6432135B30C009ABF2C /* UpdateUserAction.swift in Sources */,
+				4EC4A6412135B0AD009ABF2C /* ButtonComponent.swift in Sources */,
+				4E1569462135865400CE22C9 /* LodingComponent.swift in Sources */,
 				4E474280213456940009385F /* User.swift in Sources */,
-				4ED819BC2134543F00BBE6E8 /* ViewController.swift in Sources */,
+				4E156944213585FD00CE22C9 /* UserServiceProvider.swift in Sources */,
+				4E15695321359B7200CE22C9 /* MakeUserListSectionModel.swift in Sources */,
+				4EC4A6472135BA71009ABF2C /* AddNewUserAction.swift in Sources */,
+				4ED819BC2134543F00BBE6E8 /* UserListViewController.swift in Sources */,
+				4E15694C2135870500CE22C9 /* UserListViewModel.swift in Sources */,
 				4ED819BA2134543F00BBE6E8 /* AppDelegate.swift in Sources */,
 				4E47427D213456520009385F /* UserService.swift in Sources */,
+				4EC4A6452135B3B5009ABF2C /* DeleteUserAction.swift in Sources */,
+				4E15695821359D3C00CE22C9 /* LogToConsole.swift in Sources */,
+				4E15694A213586AA00CE22C9 /* UserCardComponent.swift in Sources */,
+				4E1569482135867800CE22C9 /* ErrorComponent.swift in Sources */,
+				4E15694E2135893700CE22C9 /* UsersReducer.swift in Sources */,
+				4E15695521359BF900CE22C9 /* UserItemModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,10 +10,10 @@ import Foundation
 import Moya
 
 enum UserService {
-    case createUser(name: String)
-    case readUsers
-    case updateUser(id: Int, name: String)
-    case deleteUser(id: Int)
+    case create(user: User)
+    case loadUsers
+    case update(user: User)
+    case delete(user: User)
 }
 
 extension UserService: TargetType {
@@ -24,45 +24,46 @@ extension UserService: TargetType {
     
     var path: String {
         switch self {
-        case .readUsers, .createUser(_):
+        case .loadUsers, .create(_):
             return "/users"
-        case .updateUser(let id, _), .deleteUser(let id):
-            return "/users/\(id)"
+        case .update(let user), .delete(let user):
+            return "/users/\(user.id)"
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .createUser(_):
+        case .create(_):
             return .post
-        case .readUsers:
+        case .loadUsers:
             return .get
-        case .updateUser(_, _):
+        case .update(_):
             return .put
-        case .deleteUser(_):
+        case .delete(_):
             return .delete
         }
     }
     
     var sampleData: Data {
         switch self {
-        case .createUser(let name):
-            return "{'name':'\(name)'}".data(using: .utf8)!
-        case .readUsers:
+        case .create(let user):
+            return user.toJsonData
+        case .loadUsers:
             return Data()
-        case .updateUser(let id, let name):
-            return "{'id':'\(id)', 'name':'\(name)'}".data(using: .utf8)!
-        case .deleteUser(let id):
-            return "{'id':'\(id)'}".data(using: .utf8)!
+        case .update(let user):
+            return user.toJsonData
+        case .delete(let user):
+            return "{'id':'\(user.id)'}".data(using: .utf8)!
         }
     }
     
     var task: Task {
         switch self {
-        case .readUsers, .deleteUser(_):
+        case .loadUsers, .delete(_):
             return .requestPlain
-        case .createUser(let name), .updateUser(_, let name):
-            return .requestParameters(parameters: ["name": name], encoding: JSONEncoding.default)
+        case .create(let user), .update(let user):
+            return .requestParameters(parameters: user.toParamDic,
+                                      encoding: JSONEncoding.default)
         }
     }
     
