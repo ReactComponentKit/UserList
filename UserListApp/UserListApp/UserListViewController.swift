@@ -42,7 +42,9 @@ class UserListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
         
-        tableViewComponent.dispatch(action: LoadUsersAction())
+        viewModel
+            .rx_action
+            .accept(LoadUsersAction())
     }
 }
 
