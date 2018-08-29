@@ -6,7 +6,7 @@ UserList is a example for ReactComponentKit. It is focus on requesting api async
 - [x] Load Users
 - [x] Delete User
 - [x] Update User
-- [ ] Add New User
+- [x] Add New User
 - [ ] Make and Show Loding Component when app is requesting a api.
 - [ ] Make and Show Error Component when the app has occurred some error.
 
