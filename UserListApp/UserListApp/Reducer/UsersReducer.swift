@@ -55,6 +55,18 @@ func usersReducer(name: String, state: State?) -> (Action) -> Observable<Reducer
                     return ReducerResult(name: name, result: newUsers)
                 })
                 .asObservable()
+        case let addNewUserAction as AddNewUserAction:
+            return UserServiceProvider
+                .addNewUser(user: addNewUserAction.user)
+                .map({ (newUser) -> ReducerResult in
+                    
+                    var newUsers = users
+                    newUsers.insert(newUser, at: 0)
+                    
+                    return ReducerResult(name: name, result: newUsers)
+                })
+                .asObservable()
+                
         default:
             break
         }

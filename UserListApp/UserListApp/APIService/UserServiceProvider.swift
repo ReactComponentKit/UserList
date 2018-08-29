@@ -78,4 +78,24 @@ enum UserServiceProvider {
         })
     }
     
+    static func addNewUser(user: User) -> Single<User> {
+        return Single.create(subscribe: { (single) -> Disposable in
+            
+            let cancellable = provider.request(.create(user: user)) { (result) in
+                switch result {
+                case let .success(response):
+                    let newUser = try? response.map(User.self)
+                    single(.success(newUser ?? user))
+                case let .failure(error):
+                    single(.error(error))
+                }
+            }
+            
+            return Disposables.create {
+                if cancellable.isCancelled == false {
+                    cancellable.cancel()
+                }
+            }
+        })
+    }
 }

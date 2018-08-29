@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 import BKRedux
 import ReactComponentKit
+import Fakery
 
 class UserListViewModel: RootViewModelType {
     
@@ -34,5 +35,18 @@ class UserListViewModel: RootViewModelType {
     override func on(newState: [String : State]?) {
         guard let sections = newState?["sections"] as? [DefaultSectionModel] else { return }
         rx_sections.accept(sections)
+    }
+    
+    func newUser() -> User {
+        var id: Int = 0
+        if let users = store.state["users"] as? [User] {
+            id = users.count + 1
+        }
+        
+        let name = "\(Faker().name.firstName()) \(Faker().name.lastName())"
+        let username = Faker().name.name()
+        let email = Faker().internet.email()
+        let phone = Faker().phoneNumber.phoneNumber()
+        return User(id: id, name: name, username: username, email: email, phone: phone)
     }
 }

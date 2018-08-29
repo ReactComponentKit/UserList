@@ -12,9 +12,8 @@ import RxSwift
 public final class Store {
     
     public static let concurrentQ = ConcurrentDispatchQueueScheduler(qos: .background)
-    public static let serialQ = SerialDispatchQueueScheduler(qos: .background)
     
-    private(set) var state: [String:State]
+    public private(set) var state: [String:State]
     private(set) var reducers: [String:Reducer]
     private(set) var middlewares: [Middleware]
     private(set) var postwares: [Postware]

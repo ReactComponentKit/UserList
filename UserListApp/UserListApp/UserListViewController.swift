@@ -17,6 +17,8 @@ class UserListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     private let viewModel = UserListViewModel()
     
+    private let refreshControl = UIRefreshControl()
+    
     private lazy var adapter: UITableViewAdapter = {
         let adapter = UITableViewAdapter(tableViewComponent: self.tableViewComponent, useDiff: true)
         return adapter
@@ -39,12 +41,22 @@ class UserListViewController: UIViewController {
             .drive(onNext: { [weak self] (sections) in
                 guard let strongSelf = self else { return }
                 strongSelf.adapter.set(sections: sections)
+                strongSelf.refreshControl.endRefreshing()
             })
             .disposed(by: disposeBag)
         
         viewModel
             .rx_action
             .accept(LoadUsersAction())
+        
+        refreshControl
+            .rx
+            .controlEvent(.valueChanged)
+            .map {
+                AddNewUserAction(user: self.viewModel.newUser())
+            }
+            .bind(to: viewModel.rx_action)
+            .disposed(by: disposeBag)
     }
 }
 
@@ -52,6 +64,7 @@ extension UserListViewController {
     fileprivate func setupTableViewComponent() {
         tableViewComponent.register(component: UserCardComponent.self)
         tableViewComponent.adapter = adapter
+        tableViewComponent.tableView.refreshControl = refreshControl
     }
 }
 
