@@ -8,7 +8,10 @@ target 'UserListApp' do
   # Pods for UserListApp
   pod 'ReactComponentKit'
   pod 'Moya'
-  pod 'Fakery' # for generating random name.  
+  pod 'Fakery' # for generating random name.
+  pod 'MaterialActivityIndicator' # for loading indicator
+  pod 'FontAwesome.swift'
+    
   target 'UserListAppTests' do
     inherit! :search_paths
     # Pods for testing

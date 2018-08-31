@@ -12,8 +12,16 @@ import BKRedux
 import ReactComponentKit
 import Fakery
 
+enum ViewState {
+    case loading
+    case requesting
+    case list
+    case error
+}
+
 class UserListViewModel: RootViewModelType {
     
+    let rx_viewState = BehaviorRelay<ViewState>(value: .loading)
     let rx_sections =  BehaviorRelay<[DefaultSectionModel]>(value: [])
     
     override init() {
@@ -32,10 +40,28 @@ class UserListViewModel: RootViewModelType {
             ])
     }
     
-    override func on(newState: [String : State]?) {
-        guard let sections = newState?["sections"] as? [DefaultSectionModel] else { return }
-        rx_sections.accept(sections)
+    override func beforeDispatch(action: Action) {
+        switch action {
+        case is LoadUsersAction:
+            rx_viewState.accept(.loading)
+        case is AddNewUserAction, is DeleteUserAction, is UpdateUserAction:
+            rx_viewState.accept(.requesting)
+        default:
+            break
+        }
     }
+    
+    override func on(newState: [String : State]?) {
+        if let sections = newState?["sections"] as? [DefaultSectionModel] {
+            rx_sections.accept(sections)
+        }
+        rx_viewState.accept(.list)
+    }
+    
+    override func on(error: Error, action: Action) {
+        rx_viewState.accept(.error)
+    }
+    
     
     func newUser() -> User {
         var id: Int = 0

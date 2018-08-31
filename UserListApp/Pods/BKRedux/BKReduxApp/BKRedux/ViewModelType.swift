@@ -28,6 +28,7 @@ open class ViewModelType {
     private func setupRxStream() {
         rx_action
             .filter { type(of: $0) != VoidAction.self }
+            .do(onNext: beforeDispatch)
             .flatMap(store.dispatch)
             .observeOn(MainScheduler.asyncInstance)
             .bind(to: rx_state)
@@ -42,6 +43,10 @@ open class ViewModelType {
                 }
             })
             .disposed(by: disposeBag)
+    }
+    
+    open func beforeDispatch(action: Action) {
+        
     }
     
     open func on(newState: [String:State]?) {

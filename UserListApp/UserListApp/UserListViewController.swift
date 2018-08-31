@@ -28,6 +28,16 @@ class UserListViewController: UIViewController {
         let component = UITableViewComponent(token: self.viewModel.token, canOnlyDispatchAction: true)
         return component
     }()
+    
+    private lazy var loadingComponent: LoadingComponent = {
+        let component = LoadingComponent(token: self.viewModel.token, canOnlyDispatchAction: true)
+        return component
+    }()
+    
+    private lazy var errorComponent: ErrorComponent = {
+        let component = ErrorComponent(token: self.viewModel.token, canOnlyDispatchAction: true)
+        return component
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +56,12 @@ class UserListViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel
+            .rx_viewState
+            .asDriver()
+            .drive(onNext: applyViewState)
+            .disposed(by: disposeBag)
+        
+        viewModel
             .rx_action
             .accept(LoadUsersAction())
         
@@ -57,6 +73,24 @@ class UserListViewController: UIViewController {
             }
             .bind(to: viewModel.rx_action)
             .disposed(by: disposeBag)
+    }
+    
+    func applyViewState(viewState: ViewState) {
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        errorComponent.removeFromSuperViewController()
+        loadingComponent.removeFromSuperViewController()
+        
+        switch viewState {
+        case .loading:
+            self.add(viewController: loadingComponent)
+        case .list:
+            break
+        case .requesting:
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        case .error:
+            self.add(viewController: errorComponent)
+        }
     }
 }
 
