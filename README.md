@@ -1,6 +1,8 @@
 # UserList
 UserList is a example for ReactComponentKit. It is focus on requesting api asynchronously.
 
+![](./art/video.gif)
+
 ## Completed
 
 - [x] Load Users
@@ -9,7 +11,6 @@ UserList is a example for ReactComponentKit. It is focus on requesting api async
 - [x] Add New User
 - [x] Make and Show Loding Component when app is requesting a api.
 - [x] Make and Show Error Component when the app has occurred some error.
-
 
 ## The MIT License 
 
