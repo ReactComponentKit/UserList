@@ -40,7 +40,7 @@ class UserListViewModel: RootViewModelType {
             ])
     }
     
-    override func beforeDispatch(action: Action) {
+    override func beforeDispatch(action: Action) -> Action {
         switch action {
         case is LoadUsersAction:
             rx_viewState.accept(.loading)
@@ -49,6 +49,7 @@ class UserListViewModel: RootViewModelType {
         default:
             break
         }
+        return action
     }
     
     override func on(newState: [String : State]?) {
