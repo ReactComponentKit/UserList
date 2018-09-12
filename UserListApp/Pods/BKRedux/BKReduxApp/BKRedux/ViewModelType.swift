@@ -10,7 +10,9 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct VoidAction: Action {
+public struct VoidAction: Action {
+    public init() {
+    }
 }
 
 open class ViewModelType {
