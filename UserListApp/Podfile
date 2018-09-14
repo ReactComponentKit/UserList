@@ -7,6 +7,7 @@ target 'UserListApp' do
 
   # Pods for UserListApp
   pod 'ReactComponentKit'
+  pod 'SnapKit'
   pod 'Moya'
   pod 'Fakery' # for generating random name.
   pod 'MaterialActivityIndicator' # for loading indicator
