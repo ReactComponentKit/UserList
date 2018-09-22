@@ -16,7 +16,7 @@ struct User: Codable, Hashable {
     let phone: String
     
     public var hashValue: Int {
-        return id.hashValue + name.hashValue
+        return name.hashValue
     }
 }
 
@@ -28,6 +28,7 @@ extension User {
     
     var toParamDic: [String:String] {
         return [
+            "id": "\(id)",
             "name": name,
             "username": username,
             "email": email,

@@ -7,8 +7,9 @@
 //
 
 import BKRedux
+import RxSwift
 
-func logToConsole(state: [String:State], action: Action) -> [String:State] {
+func logToConsole(state: State, action: Action) -> Observable<State> {
     print("[## LOGGING ##] action: \(String(describing: action)) :: state: \(state)")
-    return state
+    return .just(state)
 }

@@ -9,22 +9,22 @@
 import BKRedux
 import RxSwift
 
-func usersReducer(name: String, state: State?) -> (Action) -> Observable<ReducerResult> {
+func usersReducer<S>(name: StateKeyPath<S>, state: StateValue?) -> (Action) -> Observable<(StateKeyPath<S>, StateValue?)> {
     return { (action) in
-        guard let users = state as? [User] else { return Observable.just(ReducerResult(name: name, result: [])) }
+        guard let users = state as? [User] else { return .just((name, [])) }
         
         switch action {
         case is LoadUsersAction:
             return UserServiceProvider
                 .loadUsers()
-                .map({ (users) -> ReducerResult in
-                    return ReducerResult(name: name, result: users)
+                .map({ (users) in
+                    return (name, users)
                 })
                 .asObservable()
         case let deleteUserAction as DeleteUserAction:
             return UserServiceProvider
                 .deleteUser(user: deleteUserAction.user)
-                .map({ (user) -> ReducerResult in
+                .map({ (user) in
                     var newUsers = users
                     let index = newUsers.index(where: { (userItem) -> Bool in
                         return userItem.id == user.id
@@ -34,14 +34,14 @@ func usersReducer(name: String, state: State?) -> (Action) -> Observable<Reducer
                         newUsers.remove(at: index)
                     }
                     
-                    return ReducerResult(name: name, result: newUsers)
+                    return (name, newUsers)
                 })
                 .asObservable()
         case let updateUserAction as UpdateUserAction:
             return UserServiceProvider
                 .updateUser(user: updateUserAction.user)
-                .map({ (user: User?) -> ReducerResult in
-                    guard let user = user else { return ReducerResult(name: name, result: users) }
+                .map({ (user: User?) in
+                    guard let user = user else { return (name, users) }
                     
                     var newUsers = users
                     let index = newUsers.index(where: { (userItem) -> Bool in
@@ -52,18 +52,18 @@ func usersReducer(name: String, state: State?) -> (Action) -> Observable<Reducer
                         newUsers[index] = user
                     }
                     
-                    return ReducerResult(name: name, result: newUsers)
+                    return (name, newUsers)
                 })
                 .asObservable()
         case let addNewUserAction as AddNewUserAction:
             return UserServiceProvider
                 .addNewUser(user: addNewUserAction.user)
-                .map({ (newUser) -> ReducerResult in
+                .map({ (newUser) in
                     
                     var newUsers = users
                     newUsers.insert(newUser, at: 0)
                     
-                    return ReducerResult(name: name, result: newUsers)
+                    return (name, newUsers)
                 })
                 .asObservable()
                 
@@ -71,6 +71,6 @@ func usersReducer(name: String, state: State?) -> (Action) -> Observable<Reducer
             break
         }
         
-        return Observable.just(ReducerResult(name: name, result: []))
+        return .just((name, []))
     }
 }

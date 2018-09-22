@@ -19,7 +19,13 @@ enum ViewState {
     case error
 }
 
-class UserListViewModel: RootViewModelType {
+struct UserListState: State {
+    var users: [User] = []
+    var sections: [DefaultSectionModel] = []
+    var error: (Error, Action)? = nil
+}
+
+class UserListViewModel: RootViewModelType<UserListState> {
     
     let rx_viewState = BehaviorRelay<ViewState>(value: .loading)
     let rx_sections =  BehaviorRelay<[DefaultSectionModel]>(value: [])
@@ -28,11 +34,9 @@ class UserListViewModel: RootViewModelType {
         super.init()
         
         store.set(
-            state: [
-                "users": [User]()
-            ],
+            initailState: UserListState(),
             reducers: [
-                "users": usersReducer
+                StateKeyPath(\UserListState.users): usersReducer
             ],
             postwares: [
                 logToConsole,
@@ -52,10 +56,8 @@ class UserListViewModel: RootViewModelType {
         return action
     }
     
-    override func on(newState: [String : State]?) {
-        if let sections = newState?["sections"] as? [DefaultSectionModel] {
-            rx_sections.accept(sections)
-        }
+    override func on(newState: UserListState) {
+        rx_sections.accept(newState.sections)
         rx_viewState.accept(.list)
     }
     
@@ -66,8 +68,8 @@ class UserListViewModel: RootViewModelType {
     
     func newUser() -> User {
         var id: Int = 0
-        if let users = store.state["users"] as? [User] {
-            id = users.count + 1
+        if let userListState = store.state as? UserListState {
+            id = userListState.users.count + 1
         }
         
         let name = "\(Faker().name.firstName()) \(Faker().name.lastName())"

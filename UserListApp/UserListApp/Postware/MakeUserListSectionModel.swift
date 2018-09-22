@@ -6,16 +6,23 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
+import RxSwift
 import BKRedux
 import ReactComponentKit
 
-func makeUserListSectionModel(state: [String:State], action: Action) -> [String:State] {
-    guard let userList = state["users"] as? [User] else { return state }
+func makeUserListSectionModel(state: State, action: Action) -> Observable<(State)> {
+    guard let userListState = state as? UserListState else { return .just(state) }
     
-    let userItemModelList = userList.map(UserItemModel.init)
+    let userItemModelList = userListState.users.map(UserItemModel.init)
     let section = DefaultSectionModel(items: userItemModelList)
     
-    var newState = state
-    newState["sections"] = [section]
-    return newState
+    var newState = userListState
+    newState.sections = [section]
+    
+    newState.sections.forEach { (sectionModel) in
+        sectionModel.items.forEach({ (item) in
+            print("[## item \(item)")
+        })
+    }
+    return .just(newState)
 }
