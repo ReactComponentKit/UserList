@@ -356,7 +356,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-UserListApp/Pods-UserListApp-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-UserListApp/Pods-UserListApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BKEventBus/BKEventBus.framework",
 				"${BUILT_PRODUCTS_DIR}/BKRedux/BKRedux.framework",
@@ -387,7 +387,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-UserListApp/Pods-UserListApp-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-UserListApp/Pods-UserListApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E1217EE45F154AF5E876E024 /* [CP] Check Pods Manifest.lock */ = {
@@ -531,6 +531,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -584,6 +585,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -602,7 +604,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.skyfe79.UserListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -621,7 +623,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.github.skyfe79.UserListApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
