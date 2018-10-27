@@ -61,7 +61,7 @@ class UserListViewModel: RootViewModelType<UserListState> {
         rx_viewState.accept(.list)
     }
     
-    override func on(error: Error, action: Action) {
+    override func on(error: Error, action: Action, onState: UserListState) {
         rx_viewState.accept(.error)
     }
     

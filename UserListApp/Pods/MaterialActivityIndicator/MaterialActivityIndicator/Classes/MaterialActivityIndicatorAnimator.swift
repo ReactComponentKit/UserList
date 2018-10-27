@@ -60,7 +60,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 1
         animation.fromValue = 0
         animation.toValue = 0.15
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         return animation
     }
@@ -70,7 +70,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 1
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         return animation
     }
@@ -81,7 +81,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 0.5
         animation.fromValue = 0.15
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         return animation
     }
@@ -92,7 +92,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 0.5
         animation.fromValue = 1
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
 
         return animation
     }
