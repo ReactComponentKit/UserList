@@ -34,7 +34,7 @@ class UserListViewModel: RootViewModelType<UserListState> {
         super.init()
         
         store.set(
-            initailState: UserListState(),
+            initialState: UserListState(),
             reducers: [
                 StateKeyPath(\UserListState.users): usersReducer
             ],
