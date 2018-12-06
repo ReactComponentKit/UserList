@@ -3,12 +3,12 @@
 //  MaterialActivityIndicator
 //
 //  Created by Jans Pavlovs on 15.02.18.
+//  Copyright (c) 2018 Jans Pavlovs. All rights reserved.
 //
 
 import UIKit
 
 final class MaterialActivityIndicatorAnimator {
-
     enum Animation: String {
         var key: String {
             return rawValue
@@ -30,7 +30,6 @@ final class MaterialActivityIndicatorAnimator {
 }
 
 extension MaterialActivityIndicatorAnimator {
-
     private func rotationAnimation() -> CABasicAnimation {
         let animation = CABasicAnimation(key: .rotationZ)
         animation.duration = 4
@@ -60,7 +59,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 1
         animation.fromValue = 0
         animation.toValue = 0.15
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
         return animation
     }
@@ -70,7 +69,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 1
         animation.fromValue = 0
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
         return animation
     }
@@ -81,7 +80,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 0.5
         animation.fromValue = 0.15
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
         return animation
     }
@@ -92,7 +91,7 @@ extension MaterialActivityIndicatorAnimator {
         animation.duration = 0.5
         animation.fromValue = 1
         animation.toValue = 1
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        animation.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
 
         return animation
     }

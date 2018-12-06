@@ -3,12 +3,12 @@
 //  MaterialActivityIndicator
 //
 //  Created by Jans Pavlovs on 15.02.18.
+//  Copyright (c) 2018 Jans Pavlovs. All rights reserved.
 //
 
 import UIKit
 
 extension CAPropertyAnimation {
-
     enum Key: String {
         var path: String {
             return rawValue

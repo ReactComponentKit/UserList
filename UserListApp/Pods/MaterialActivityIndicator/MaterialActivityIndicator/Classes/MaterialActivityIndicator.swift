@@ -2,15 +2,14 @@
 //  MaterialActivityIndicator.swift
 //  MaterialActivityIndicator
 //
-//  Created by nspavlo on 02/13/2018.
-//  Copyright (c) 2018 nspavlo. All rights reserved.
+//  Created by Jans Pavlovs on 02/13/2018.
+//  Copyright (c) 2018 Jans Pavlovs. All rights reserved.
 //
 
 import UIKit
 
 @IBDesignable
 public class MaterialActivityIndicatorView: UIView {
-
     @IBInspectable
     public var color: UIColor = .red {
         didSet {
@@ -57,7 +56,6 @@ public class MaterialActivityIndicatorView: UIView {
 }
 
 extension MaterialActivityIndicatorView {
-
     override public var intrinsicContentSize: CGSize {
         return CGSize(width: 24, height: 24)
     }
@@ -74,7 +72,6 @@ extension MaterialActivityIndicatorView {
 }
 
 extension MaterialActivityIndicatorView {
-
     public func startAnimating() {
         guard !isAnimating else { return }
 
