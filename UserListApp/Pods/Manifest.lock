@@ -1,18 +1,18 @@
 PODS:
   - Alamofire (4.8.0)
   - BKEventBus (1.0.8)
-  - BKRedux (1.1.2):
+  - BKRedux (1.2.0):
     - RxCocoa (>= 4.2.0)
     - RxSwift (>= 4.2.0)
   - Fakery (3.4.0)
-  - FontAwesome.swift (1.4.6)
+  - FontAwesome.swift (1.4.8)
   - MaterialActivityIndicator (0.0.4)
   - Moya (12.0.1):
     - Moya/Core (= 12.0.1)
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
     - Result (~> 4.0)
-  - ReactComponentKit (0.3.3):
+  - ReactComponentKit (0.3.4):
     - BKEventBus (>= 1.0.7)
     - BKRedux (>= 1.0.0)
     - RxCocoa (>= 4.2.0)
@@ -52,12 +52,12 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
   BKEventBus: b6ec629c0581c98a9c798f930aadd92b751a3f6b
-  BKRedux: 2c729b490888bb8a75d4e7b1abe41fd44738e956
+  BKRedux: fa0030fb7f3add308ed43af6b6639fa318ba29d8
   Fakery: 885e894a3e7c392e1da96c6e46a1abe5a0b28686
-  FontAwesome.swift: 18fb500c0decc2bbfadf2ae16a936704ec2c49bd
+  FontAwesome.swift: fb8637bffb9a588c7e8c753c084565b27b20a39d
   MaterialActivityIndicator: f5ea8ece4def5fcc658909f381bcefc341e2b99c
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
-  ReactComponentKit: 8a944f7533fb08cd910be235e749085b10315368
+  ReactComponentKit: 66cfcf5ee82332b1715cc96ecfb6addb0ab21cc9
   Result: 7645bb3f50c2ce726dd0ff2fa7b6f42bbe6c3713
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749

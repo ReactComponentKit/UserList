@@ -36,7 +36,7 @@ class UserListViewModel: RootViewModelType<UserListState> {
         store.set(
             initialState: UserListState(),
             reducers: [
-                StateKeyPath(\UserListState.users): usersReducer
+                usersReducer
             ],
             postwares: [
                 logToConsole,

@@ -61,9 +61,7 @@ class UserListViewController: UIViewController {
             .drive(onNext: applyViewState)
             .disposed(by: disposeBag)
         
-        viewModel
-            .rx_action
-            .accept(LoadUsersAction())
+        viewModel.dispatch(action: LoadUsersAction())
         
         refreshControl
             .rx
@@ -71,7 +69,7 @@ class UserListViewController: UIViewController {
             .map {
                 AddNewUserAction(user: self.viewModel.newUser())
             }
-            .bind(to: viewModel.rx_action)
+            .bind(onNext: viewModel.dispatch)
             .disposed(by: disposeBag)
     }
     
