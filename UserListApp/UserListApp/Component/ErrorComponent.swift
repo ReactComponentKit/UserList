@@ -26,7 +26,7 @@ class ErrorComponent: UIViewControllerComponent {
     
     
     private lazy var loadingButton: ButtonComponent = {
-        let button = ButtonComponent(token: self.token, canOnlyDispatchAction: true)
+        let button = ButtonComponent(token: self.token, receiveState: false)
         button.title = "RELOADING"
         button.layer.cornerRadius = 8
         button.backgroundColor = .white

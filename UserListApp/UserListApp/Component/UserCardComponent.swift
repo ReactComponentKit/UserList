@@ -65,7 +65,7 @@ class UserCardComponent: UIViewComponent {
     }()
     
     private lazy var updateButton: ButtonComponent = {
-        let button = ButtonComponent(token: self.token, canOnlyDispatchAction: true)
+        let button = ButtonComponent(token: self.token, receiveState: false)
         button.title = "UPDATE"
         button.layer.cornerRadius = 8
         button.backgroundColor = .yellow
@@ -73,7 +73,7 @@ class UserCardComponent: UIViewComponent {
     }()
     
     private lazy var deleteButton: ButtonComponent = {
-        let button = ButtonComponent(token: self.token, canOnlyDispatchAction: true)
+        let button = ButtonComponent(token: self.token, receiveState: false)
         button.title = "DELETE"
         button.layer.cornerRadius = 8
         button.backgroundColor = UIColor.red.withAlphaComponent(0.5)
@@ -152,7 +152,7 @@ class UserCardComponent: UIViewComponent {
         return CGSize(width: UIScreen.main.bounds.width, height: 160)
     }
     
-    override func configure<Item>(item: Item) {
+    override func configure<Item>(item: Item, at indexPath: IndexPath) {
         guard let userItem = item as? UserItemModel else { return }
         self.user = userItem.user
         

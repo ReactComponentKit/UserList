@@ -25,17 +25,17 @@ class UserListViewController: UIViewController {
     }()
     
     private lazy var tableViewComponent: UITableViewComponent = {
-        let component = UITableViewComponent(token: self.viewModel.token, canOnlyDispatchAction: true)
+        let component = UITableViewComponent(token: self.viewModel.token, receiveState: false)
         return component
     }()
     
     private lazy var loadingComponent: LoadingComponent = {
-        let component = LoadingComponent(token: self.viewModel.token, canOnlyDispatchAction: true)
+        let component = LoadingComponent(token: self.viewModel.token, receiveState: false)
         return component
     }()
     
     private lazy var errorComponent: ErrorComponent = {
-        let component = ErrorComponent(token: self.viewModel.token, canOnlyDispatchAction: true)
+        let component = ErrorComponent(token: self.viewModel.token, receiveState: false)
         return component
     }()
 

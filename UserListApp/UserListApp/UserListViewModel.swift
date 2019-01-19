@@ -68,7 +68,7 @@ class UserListViewModel: RootViewModelType<UserListState> {
     
     func newUser() -> User {
         var id: Int = 0
-        if let userListState = store.state as? UserListState {
+        if let userListState = store.state {
             id = userListState.users.count + 1
         }
         
