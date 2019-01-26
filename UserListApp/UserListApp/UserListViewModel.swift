@@ -36,11 +36,9 @@ class UserListViewModel: RootViewModelType<UserListState> {
         store.set(
             initialState: UserListState(),
             reducers: [
-                usersReducer
-            ],
-            postwares: [
-                logToConsole,
-                makeUserListSectionModel
+                usersReducer,
+                makeUserListSectionModel,
+                logToConsole
             ])
     }
     
@@ -61,17 +59,13 @@ class UserListViewModel: RootViewModelType<UserListState> {
         rx_viewState.accept(.list)
     }
     
-    override func on(error: Error, action: Action, onState: UserListState) {
+    override func on(error: Error, action: Action) {
         rx_viewState.accept(.error)
     }
     
     
     func newUser() -> User {
-        var id: Int = 0
-        if let userListState = store.state {
-            id = userListState.users.count + 1
-        }
-        
+        let id = store.state.users.count + 1
         let name = "\(Faker().name.firstName()) \(Faker().name.lastName())"
         let username = Faker().name.name()
         let email = Faker().internet.email()

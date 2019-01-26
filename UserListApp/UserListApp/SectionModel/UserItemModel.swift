@@ -8,9 +8,22 @@
 
 import ReactComponentKit
 
-struct UserItemModel: ItemModel {
+struct UserItemModel: ItemModel, Hashable, Equatable {
+    
+    static func == (lhs: UserItemModel, rhs: UserItemModel) -> Bool {
+        return lhs.hashValue == rhs.hashValue
+    }
+    
     var id: Int {
-        return user.hashValue
+        return self.hashValue
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(user.id)
+        hasher.combine(user.name)
+        hasher.combine(user.email)
+        hasher.combine(user.username)
+        hasher.combine(user.phone)
     }
     
     var componentClass: UIViewComponent.Type {

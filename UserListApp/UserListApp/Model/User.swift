@@ -8,16 +8,12 @@
 
 import Foundation
 
-struct User: Codable, Hashable {
+struct User: Codable {
     let id: Int
     let name: String
     let username: String
     let email: String
-    let phone: String
-    
-    public var hashValue: Int {
-        return name.hashValue
-    }
+    let phone: String    
 }
 
 extension User {

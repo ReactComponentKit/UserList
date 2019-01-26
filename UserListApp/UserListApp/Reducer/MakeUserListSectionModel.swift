@@ -11,7 +11,12 @@ import BKRedux
 import ReactComponentKit
 
 func makeUserListSectionModel(state: State, action: Action) -> Observable<(State)> {
-    guard let userListState = state as? UserListState else { return .just(state) }
+    guard
+        action is UpdateSectionsAction,
+        let userListState = state as? UserListState
+    else {
+        return .just(state)
+    }
     
     let userItemModelList = userListState.users.map(UserItemModel.init)
     let section = DefaultSectionModel(items: userItemModelList)

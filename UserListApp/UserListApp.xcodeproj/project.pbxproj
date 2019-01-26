@@ -23,6 +23,7 @@
 		4EC4A6432135B30C009ABF2C /* UpdateUserAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6422135B30C009ABF2C /* UpdateUserAction.swift */; };
 		4EC4A6452135B3B5009ABF2C /* DeleteUserAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6442135B3B5009ABF2C /* DeleteUserAction.swift */; };
 		4EC4A6472135BA71009ABF2C /* AddNewUserAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6462135BA71009ABF2C /* AddNewUserAction.swift */; };
+		4ECD4B9521FCD0C20034FAD1 /* UpdateSectionsAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD4B9421FCD0C20034FAD1 /* UpdateSectionsAction.swift */; };
 		4ED819BA2134543F00BBE6E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED819B92134543F00BBE6E8 /* AppDelegate.swift */; };
 		4ED819BC2134543F00BBE6E8 /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ED819BB2134543F00BBE6E8 /* UserListViewController.swift */; };
 		4ED819BF2134543F00BBE6E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ED819BD2134543F00BBE6E8 /* Main.storyboard */; };
@@ -62,6 +63,7 @@
 		4EC4A6422135B30C009ABF2C /* UpdateUserAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserAction.swift; sourceTree = "<group>"; };
 		4EC4A6442135B3B5009ABF2C /* DeleteUserAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteUserAction.swift; sourceTree = "<group>"; };
 		4EC4A6462135BA71009ABF2C /* AddNewUserAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewUserAction.swift; sourceTree = "<group>"; };
+		4ECD4B9421FCD0C20034FAD1 /* UpdateSectionsAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateSectionsAction.swift; sourceTree = "<group>"; };
 		4ED819B62134543F00BBE6E8 /* UserListApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UserListApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ED819B92134543F00BBE6E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4ED819BB2134543F00BBE6E8 /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				4EC4A6422135B30C009ABF2C /* UpdateUserAction.swift */,
 				4EC4A6442135B3B5009ABF2C /* DeleteUserAction.swift */,
 				4EC4A6462135BA71009ABF2C /* AddNewUserAction.swift */,
+				4ECD4B9421FCD0C20034FAD1 /* UpdateSectionsAction.swift */,
 			);
 			path = Action;
 			sourceTree = "<group>";
@@ -124,17 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				4E15694D2135893700CE22C9 /* UsersReducer.swift */,
+				4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */,
+				4E15695721359D3C00CE22C9 /* LogToConsole.swift */,
 			);
 			path = Reducer;
-			sourceTree = "<group>";
-		};
-		4E156942213585E300CE22C9 /* Postware */ = {
-			isa = PBXGroup;
-			children = (
-				4E15695721359D3C00CE22C9 /* LogToConsole.swift */,
-				4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */,
-			);
-			path = Postware;
 			sourceTree = "<group>";
 		};
 		4E15695121359B2900CE22C9 /* SectionModel */ = {
@@ -187,7 +183,6 @@
 			children = (
 				4E1569402135858E00CE22C9 /* Action */,
 				4E156941213585DD00CE22C9 /* Reducer */,
-				4E156942213585E300CE22C9 /* Postware */,
 				4E15693F2135857600CE22C9 /* Component */,
 				4E47427E213456830009385F /* Model */,
 				4E47427B213456340009385F /* APIService */,
@@ -429,6 +424,7 @@
 				4E15694C2135870500CE22C9 /* UserListViewModel.swift in Sources */,
 				4ED819BA2134543F00BBE6E8 /* AppDelegate.swift in Sources */,
 				4E47427D213456520009385F /* UserService.swift in Sources */,
+				4ECD4B9521FCD0C20034FAD1 /* UpdateSectionsAction.swift in Sources */,
 				4EC4A6452135B3B5009ABF2C /* DeleteUserAction.swift in Sources */,
 				4E15695821359D3C00CE22C9 /* LogToConsole.swift in Sources */,
 				4E15694A213586AA00CE22C9 /* UserCardComponent.swift in Sources */,

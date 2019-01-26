@@ -90,6 +90,10 @@ class UserListViewController: UIViewController {
             self.add(viewController: errorComponent)
         }
     }
+    
+    deinit {
+        viewModel.deinitialize()
+    }
 }
 
 extension UserListViewController {
