@@ -27,8 +27,8 @@ struct UserListState: State {
 
 class UserListViewModel: RootViewModelType<UserListState> {
     
-    let rx_viewState = BehaviorRelay<ViewState>(value: .loading)
-    let rx_sections =  BehaviorRelay<[DefaultSectionModel]>(value: [])
+    let viewState = Output<ViewState>(value: .loading)
+    let sections =  Output<[DefaultSectionModel]>(value: [])
     
     override init() {
         super.init()
@@ -45,9 +45,9 @@ class UserListViewModel: RootViewModelType<UserListState> {
     override func beforeDispatch(action: Action) -> Action {
         switch action {
         case is LoadUsersAction:
-            rx_viewState.accept(.loading)
+            viewState.accept(.loading)
         case is AddNewUserAction, is DeleteUserAction, is UpdateUserAction:
-            rx_viewState.accept(.requesting)
+            viewState.accept(.requesting)
         default:
             break
         }
@@ -55,12 +55,12 @@ class UserListViewModel: RootViewModelType<UserListState> {
     }
     
     override func on(newState: UserListState) {
-        rx_sections.accept(newState.sections)
-        rx_viewState.accept(.list)
+        sections.accept(newState.sections)
+        viewState.accept(.list)
     }
     
     override func on(error: Error, action: Action) {
-        rx_viewState.accept(.error)
+        viewState.accept(.error)
     }
     
     

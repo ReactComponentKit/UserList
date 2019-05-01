@@ -47,7 +47,9 @@ class UserListViewController: UIViewController {
         }
         setupTableViewComponent()
         
-        viewModel.rx_sections.asDriver()
+        viewModel
+            .sections
+            .asDriver()
             .drive(onNext: { [weak self] (sections) in
                 guard let strongSelf = self else { return }
                 strongSelf.adapter.set(sections: sections)
@@ -56,7 +58,7 @@ class UserListViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel
-            .rx_viewState
+            .viewState
             .asDriver()
             .drive(onNext: applyViewState)
             .disposed(by: disposeBag)
