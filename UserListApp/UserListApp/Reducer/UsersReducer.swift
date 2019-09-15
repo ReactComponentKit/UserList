@@ -6,30 +6,40 @@
 //  Copyright © 2018년 Burt.K. All rights reserved.
 //
 
-import BKRedux
+import ReactComponentKit
 import RxSwift
 
 extension UserListViewModel {
-    func usersReducer(state: State, action: Action) -> Observable<State> {
-        guard var mutableState = state as? UserListState else { return .just(state) }
+    
+    func loadUsers(action: LoadUsersAction) -> Observable<UserListState> {
         
-        switch action {
-        case is LoadUsersAction:
-            return UserServiceProvider
-                .loadUsers()
-                .map({ (users) in
-                    mutableState.users = users
-                    return mutableState
-                })
-                .do(onSuccess: { [weak self] (_) in
-                    self?.nextDispatch(action: UpdateSectionsAction())
-                })
-                .asObservable()
-        case let deleteUserAction as DeleteUserAction:
-            return UserServiceProvider
-                .deleteUser(user: deleteUserAction.user)
-                .map({ (user) in
-                    var newUsers = mutableState.users
+        setState {
+            $0.copy { $0.viewState = .loading }
+        }
+        
+        return UserServiceProvider
+            .loadUsers()
+            .map({ [weak self] (users) in
+                guard let strongSelf = self else { return UserListState() }
+                return strongSelf.withState { state in
+                    state.copy { $0.users = users }
+                }
+            })
+            .asObservable()
+    }
+    
+    func deleteUser(action: DeleteUserAction) -> Observable<UserListState> {
+        
+        setState {
+            $0.copy { $0.viewState = .requesting }
+        }
+        
+        return UserServiceProvider
+            .deleteUser(user: action.user)
+            .map({ [weak self] (user) in
+                guard let strongSelf = self else { return UserListState() }
+                return strongSelf.withState { state in
+                    var newUsers = state.users
                     let index = newUsers.index(where: { (userItem) -> Bool in
                         return userItem.id == user.id
                     })
@@ -38,20 +48,26 @@ extension UserListViewModel {
                         newUsers.remove(at: index)
                     }
                     
-                    mutableState.users = newUsers
-                    return mutableState
-                })
-                .do(onSuccess: { [weak self] (_) in
-                    self?.nextDispatch(action: UpdateSectionsAction())
-                })
-                .asObservable()
-        case let updateUserAction as UpdateUserAction:
-            return UserServiceProvider
-                .updateUser(user: updateUserAction.user)
-                .map({ (user: User?) in
-                    guard let user = user else { return mutableState }
+                    return state.copy { $0.users = newUsers }
+                }
+            })
+            .asObservable()
+    }
+    
+    func updateUser(action: UpdateUserAction) -> Observable<UserListState> {
+        
+        setState {
+            $0.copy { $0.viewState = .requesting }
+        }
+        
+        return UserServiceProvider
+            .updateUser(user: action.user)
+            .map({ [weak self] (user: User?) in
+                guard let strongSelf = self else { return UserListState() }
+                return strongSelf.withState { state in
+                    guard let user = user else { return state }
+                    var newUsers = state.users
                     
-                    var newUsers = mutableState.users
                     let index = newUsers.index(where: { (userItem) -> Bool in
                         return userItem.id == user.id
                     })
@@ -59,32 +75,28 @@ extension UserListViewModel {
                     if let index = index {
                         newUsers[index] = user
                     }
-                    mutableState.users = newUsers
-                    return mutableState
-                })
-                .do(onSuccess: { [weak self] (_) in
-                    self?.nextDispatch(action: UpdateSectionsAction())
-                })
-                .asObservable()
-        case let addNewUserAction as AddNewUserAction:
-            return UserServiceProvider
-                .addNewUser(user: addNewUserAction.user)
-                .map({ (newUser) in
-                    
-                    var newUsers = mutableState.users
-                    newUsers.insert(newUser, at: 0)
-                    mutableState.users = newUsers
-                    return mutableState
-                })
-                .do(onSuccess: { [weak self] (_) in
-                    self?.nextDispatch(action: UpdateSectionsAction())
-                })
-                .asObservable()
-            
-        default:
-            break
+                    return state.copy { $0.users = newUsers }
+                }
+            })
+            .asObservable()
+    }
+    
+    func addNewUser(action: AddNewUserAction) -> Observable<UserListState> {
+        
+        setState {
+            $0.copy { $0.viewState = .requesting }
         }
         
-        return .just(mutableState)
+        return UserServiceProvider
+            .addNewUser(user: action.user)
+            .map({ [weak self] (newUser) in
+                guard let strongSelf = self else { return UserListState() }
+                return strongSelf.withState { state in
+                    var newUsers = state.users
+                    newUsers.insert(newUser, at: 0)
+                    return state.copy { $0.users = newUsers }
+                }
+            })
+            .asObservable()
     }
 }

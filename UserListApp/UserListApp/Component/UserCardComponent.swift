@@ -65,7 +65,7 @@ class UserCardComponent: UIViewComponent {
     }()
     
     private lazy var updateButton: ButtonComponent = {
-        let button = ButtonComponent(token: self.token, receiveState: false)
+        let button = ButtonComponent(token: self.token)
         button.title = "UPDATE"
         button.layer.cornerRadius = 8
         button.backgroundColor = .yellow
@@ -73,7 +73,7 @@ class UserCardComponent: UIViewComponent {
     }()
     
     private lazy var deleteButton: ButtonComponent = {
-        let button = ButtonComponent(token: self.token, receiveState: false)
+        let button = ButtonComponent(token: self.token)
         button.title = "DELETE"
         button.layer.cornerRadius = 8
         button.backgroundColor = UIColor.red.withAlphaComponent(0.5)
