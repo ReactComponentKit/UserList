@@ -25,17 +25,17 @@ class UserListViewController: UIViewController {
     }()
     
     private lazy var tableViewComponent: UITableViewComponent = {
-        let component = UITableViewComponent(token: self.viewModel.token, receiveState: false)
+        let component = UITableViewComponent(token: self.viewModel.token)
         return component
     }()
     
     private lazy var loadingComponent: LoadingComponent = {
-        let component = LoadingComponent(token: self.viewModel.token, receiveState: false)
+        let component = LoadingComponent(token: self.viewModel.token)
         return component
     }()
     
     private lazy var errorComponent: ErrorComponent = {
-        let component = ErrorComponent(token: self.viewModel.token, receiveState: false)
+        let component = ErrorComponent(token: self.viewModel.token)
         return component
     }()
 
@@ -90,6 +90,8 @@ class UserListViewController: UIViewController {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         case .error:
             self.add(viewController: errorComponent)
+        case .none:
+            break
         }
     }
     

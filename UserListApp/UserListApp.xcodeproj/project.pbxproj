@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,9 +14,9 @@
 		4E15694C2135870500CE22C9 /* UserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15694B2135870500CE22C9 /* UserListViewModel.swift */; };
 		4E15694E2135893700CE22C9 /* UsersReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15694D2135893700CE22C9 /* UsersReducer.swift */; };
 		4E156950213589CE00CE22C9 /* LoadUsersAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15694F213589CE00CE22C9 /* LoadUsersAction.swift */; };
-		4E15695321359B7200CE22C9 /* MakeUserListSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */; };
+		4E15695321359B7200CE22C9 /* MakeCollectionViewSectionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695221359B7200CE22C9 /* MakeCollectionViewSectionModels.swift */; };
 		4E15695521359BF900CE22C9 /* UserItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695421359BF900CE22C9 /* UserItemModel.swift */; };
-		4E15695821359D3C00CE22C9 /* LogToConsole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695721359D3C00CE22C9 /* LogToConsole.swift */; };
+		4E15695821359D3C00CE22C9 /* LogAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E15695721359D3C00CE22C9 /* LogAction.swift */; };
 		4E47427D213456520009385F /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47427C213456520009385F /* UserService.swift */; };
 		4E474280213456940009385F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E47427F213456940009385F /* User.swift */; };
 		4EC4A6412135B0AD009ABF2C /* ButtonComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC4A6402135B0AD009ABF2C /* ButtonComponent.swift */; };
@@ -54,9 +54,9 @@
 		4E15694B2135870500CE22C9 /* UserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewModel.swift; sourceTree = "<group>"; };
 		4E15694D2135893700CE22C9 /* UsersReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersReducer.swift; sourceTree = "<group>"; };
 		4E15694F213589CE00CE22C9 /* LoadUsersAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadUsersAction.swift; sourceTree = "<group>"; };
-		4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeUserListSectionModel.swift; sourceTree = "<group>"; };
+		4E15695221359B7200CE22C9 /* MakeCollectionViewSectionModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MakeCollectionViewSectionModels.swift; sourceTree = "<group>"; };
 		4E15695421359BF900CE22C9 /* UserItemModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserItemModel.swift; sourceTree = "<group>"; };
-		4E15695721359D3C00CE22C9 /* LogToConsole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogToConsole.swift; sourceTree = "<group>"; };
+		4E15695721359D3C00CE22C9 /* LogAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogAction.swift; sourceTree = "<group>"; };
 		4E47427C213456520009385F /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
 		4E47427F213456940009385F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4EC4A6402135B0AD009ABF2C /* ButtonComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonComponent.swift; sourceTree = "<group>"; };
@@ -127,8 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				4E15694D2135893700CE22C9 /* UsersReducer.swift */,
-				4E15695221359B7200CE22C9 /* MakeUserListSectionModel.swift */,
-				4E15695721359D3C00CE22C9 /* LogToConsole.swift */,
+				4E15695221359B7200CE22C9 /* MakeCollectionViewSectionModels.swift */,
+				4E15695721359D3C00CE22C9 /* LogAction.swift */,
 			);
 			path = Reducer;
 			sourceTree = "<group>";
@@ -393,7 +393,7 @@
 				4E1569462135865400CE22C9 /* LodingComponent.swift in Sources */,
 				4E474280213456940009385F /* User.swift in Sources */,
 				4E156944213585FD00CE22C9 /* UserServiceProvider.swift in Sources */,
-				4E15695321359B7200CE22C9 /* MakeUserListSectionModel.swift in Sources */,
+				4E15695321359B7200CE22C9 /* MakeCollectionViewSectionModels.swift in Sources */,
 				4EC4A6472135BA71009ABF2C /* AddNewUserAction.swift in Sources */,
 				4ED819BC2134543F00BBE6E8 /* UserListViewController.swift in Sources */,
 				4E15694C2135870500CE22C9 /* UserListViewModel.swift in Sources */,
@@ -401,7 +401,7 @@
 				4E47427D213456520009385F /* UserService.swift in Sources */,
 				4ECD4B9521FCD0C20034FAD1 /* UpdateSectionsAction.swift in Sources */,
 				4EC4A6452135B3B5009ABF2C /* DeleteUserAction.swift in Sources */,
-				4E15695821359D3C00CE22C9 /* LogToConsole.swift in Sources */,
+				4E15695821359D3C00CE22C9 /* LogAction.swift in Sources */,
 				4E15694A213586AA00CE22C9 /* UserCardComponent.swift in Sources */,
 				4E1569482135867800CE22C9 /* ErrorComponent.swift in Sources */,
 				4E15694E2135893700CE22C9 /* UsersReducer.swift in Sources */,

@@ -6,7 +6,7 @@
 //  Copyright © 2019년 Burt.K. All rights reserved.
 //
 
-import BKRedux
+import ReactComponentKit
 
 struct UpdateSectionsAction: Action {
 }

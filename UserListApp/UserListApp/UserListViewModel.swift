@@ -8,11 +8,11 @@
 
 import RxSwift
 import RxCocoa
-import BKRedux
 import ReactComponentKit
 import Fakery
 
 enum ViewState {
+    case none
     case loading
     case requesting
     case list
@@ -20,56 +20,66 @@ enum ViewState {
 }
 
 struct UserListState: State {
+    var viewState: ViewState = .none
     var users: [User] = []
     var sections: [DefaultSectionModel] = []
-    var error: (Error, Action)? = nil
+    var error: RCKError? = nil
 }
 
-class UserListViewModel: RootViewModelType<UserListState> {
+class UserListViewModel: RCKViewModel<UserListState> {
     
     let viewState = Output<ViewState>(value: .loading)
     let sections =  Output<[DefaultSectionModel]>(value: [])
     
-    override init() {
-        super.init()
-        
-        store.set(
-            initialState: UserListState(),
-            reducers: [
-                usersReducer,
-                makeUserListSectionModel,
-                logToConsole
-            ])
-    }
-    
-    override func beforeDispatch(action: Action) -> Action {
-        switch action {
-        case is LoadUsersAction:
-            viewState.accept(.loading)
-        case is AddNewUserAction, is DeleteUserAction, is UpdateUserAction:
-            viewState.accept(.requesting)
-        default:
-            break
+    override func setupStore() {
+        initStore { store in
+            store.initial(state: UserListState())
+            store.beforeActionFlow(logAction)
+            
+            store.flow(action: LoadUsersAction.self)
+                .flow(
+                    awaitFlow(loadUsers),
+                    { state, _ in makeCollectionViewSectionModels(state: state) }
+                )
+            
+            store.flow(action: AddNewUserAction.self)
+                .flow(
+                    awaitFlow(addNewUser),
+                    { state, _ in makeCollectionViewSectionModels(state: state) }
+                )
+            
+            store.flow(action: DeleteUserAction.self)
+                .flow(
+                    awaitFlow(deleteUser),
+                    { state, _ in makeCollectionViewSectionModels(state: state) }
+                )
+            
+            store.flow(action: UpdateUserAction.self)
+                .flow(
+                    awaitFlow(updateUser),
+                    { state, _ in makeCollectionViewSectionModels(state: state) }
+                )
         }
-        return action
     }
-    
+        
     override func on(newState: UserListState) {
         sections.accept(newState.sections)
         viewState.accept(.list)
     }
     
-    override func on(error: Error, action: Action) {
+    override func on(error: RCKError) {
         viewState.accept(.error)
     }
     
     
     func newUser() -> User {
-        let id = store.state.users.count + 1
-        let name = "\(Faker().name.firstName()) \(Faker().name.lastName())"
-        let username = Faker().name.name()
-        let email = Faker().internet.email()
-        let phone = Faker().phoneNumber.phoneNumber()
-        return User(id: id, name: name, username: username, email: email, phone: phone)
+        return withState { state in
+            let id = state.users.count + 1
+            let name = "\(Faker().name.firstName()) \(Faker().name.lastName())"
+            let username = Faker().name.name()
+            let email = Faker().internet.email()
+            let phone = Faker().phoneNumber.phoneNumber()
+            return User(id: id, name: name, username: username, email: email, phone: phone)
+        }
     }
 }
